@@ -14,7 +14,7 @@ public:
         ListNode* current=head;
         int sum=0;
         while(current){
-            sum=sum*2+current->val;
+            sum=(sum<<1)+current->val;
             current=current->next;
         }
         return sum;
