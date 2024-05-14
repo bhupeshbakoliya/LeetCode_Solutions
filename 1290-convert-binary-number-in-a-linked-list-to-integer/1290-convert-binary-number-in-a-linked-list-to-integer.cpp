@@ -17,6 +17,7 @@ public:
             sum=(sum<<1)+current->val;
             current=current->next;
         }
+        delete current;
         return sum;
         
     }
