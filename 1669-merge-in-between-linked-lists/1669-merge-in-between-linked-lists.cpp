@@ -11,38 +11,32 @@
 class Solution {
 public:
     ListNode* mergeInBetween(ListNode* list1, int a, int b, ListNode* list2) {
-        ListNode* lastNode = nullptr;
-        ListNode* temp2 = list2;
         ListNode* temp1 = list1;
-        ListNode* athNode = nullptr;
-        ListNode* bthNode = nullptr;
-
-        // Traverse list2 to find its last node
-        while (temp2->next) {
-            temp2 = temp2->next;
-        }
-        lastNode = temp2;
 
         // Find the node just before the a-th node (athNode)
         for (int i = 0; i < a - 1; ++i) {
             temp1 = temp1->next;
         }
-        athNode = temp1;
+        ListNode* athNode = temp1;
 
         // Continue from athNode to find the b-th node (bthNode)
         for (int i = a - 1; i < b; ++i) {
             temp1 = temp1->next;
         }
-        bthNode = temp1->next;
+        ListNode* bthNode = temp1->next;
 
         // Reconnect list1
-        athNode->next = list2; 
-        while(temp2->next){
-              temp2 = temp2->next;
+        athNode->next = list2;
+
+        // Traverse list2 to find its last node
+        while (list2->next) {
+            list2 = list2->next;
         }
-        temp2->next = bthNode;
-        
-        
-    return list1;
+
+        // Connect the last node of list2 to the node after bthNode
+        list2->next = bthNode;
+
+        return list1;
     }
 };
+
