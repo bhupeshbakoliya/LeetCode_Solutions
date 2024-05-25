@@ -18,12 +18,13 @@ public:
                 temp->next=temp->next->next;
                 delete (temp2);
                 continue;
+            
             }
             if(temp->val==temp->next->val && !temp->next->next){
                 ListNode* temp2=temp->next;
                 temp->next=nullptr;
                 delete (temp2);
-                continue;
+
 
             }
 
